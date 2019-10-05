@@ -1,0 +1,16 @@
+%a {
+  color: $link-color;
+  text-decoration: none;
+  transition: color 0.3s, border-color 0.3s;
+  cursor: pointer;
+  display: inline;
+  line-height: 1em;
+  border-bottom-width: $link-border-width;
+  border-bottom-style: $link-border-style;
+  border-bottom-color: $link-border-color;
+}
+
+%a-hover {
+  color: $link-hover-color;
+  border-bottom-color: $link-hover-border-color;
+}

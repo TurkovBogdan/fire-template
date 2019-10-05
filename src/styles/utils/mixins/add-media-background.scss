@@ -1,0 +1,68 @@
+@mixin add-media-background($sizes){
+  $map: map-reverse($sizes);
+  @each $size, $src in $map {
+    $prevSize: map-prev-key($map, $size);
+
+    @if type-of($src) != map {
+      // Не ретина
+      $realSrc: "../"+$src;
+      @if($prevSize == false){
+        background-size: #{$size}px auto;
+        background-image: url($realSrc);
+      }
+      @else
+      {
+        @media screen and (min-width: #{$prevSize+1}px){
+          background-size: #{$size}px auto;
+          background-image: url($realSrc);
+        }
+      }
+    }
+    @else {
+      // Передали несколько изображений
+      @if(map-has-key($src, x1)){
+        $realSrc: "../"+map-get($src, x1);
+        @if($prevSize == false){
+          background-size: #{$size}px auto;
+          background-image: url($realSrc);
+        }
+        @else
+        {
+          @media screen and (min-width: #{$prevSize+1}px){
+            background-size: #{$size}px auto;
+            background-image: url($realSrc);
+          }
+        }
+      }
+      @if(map-has-key($src, 'x2')){
+        $realSrc: "../"+map-get($src, x2);
+        @if($prevSize == false){
+          @media(-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+            background-image: url($realSrc);
+          }
+        }
+        @else
+        {
+          @media (min-width: #{$prevSize+1}px) and (-webkit-min-device-pixel-ratio: 2), (min-width: #{$prevSize+1}px) and (min-resolution: 192dpi){
+            background-image: url($realSrc);
+          }
+        }
+      }
+      @if(map-has-key($src, x3)){
+        $realSrc: "../"+map-get($src, x3);
+        @if($prevSize == false){
+          @media(-webkit-min-device-pixel-ratio: 3), (min-resolution: 288dpi) {
+            background-image: url($realSrc);
+          }
+        }
+        @else
+        {
+          @media (min-width: #{$prevSize+1}px) and (-webkit-min-device-pixel-ratio: 2), (min-width: #{$prevSize+1}px) and (min-resolution: 288dpi){
+            background-image: url($realSrc);
+          }
+        }
+      }
+    }
+  }
+}
+

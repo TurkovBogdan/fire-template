@@ -1,0 +1,25 @@
+%input {
+  border: 1px solid rgba(38, 34, 98, 0.2);
+  box-sizing: border-box;
+  border-radius: 4px;
+  background: #FFFFFF;
+  outline: none;
+  transition: border 0.4s;
+  &:focus {
+    border-color: get-color($cl-template-accent);
+  }
+}
+
+%input-default {
+  line-height: 18px;
+  padding: 14px 16px;
+  font-size: 18px;
+  line-height: 18px;
+}
+
+%input-big {
+  line-height: 34px;
+  @include addStyleMedia((
+          padding: (lg: 15px 18px, sm: 11px 18px)
+  ))
+}

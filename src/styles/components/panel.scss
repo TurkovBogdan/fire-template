@@ -1,0 +1,14 @@
+.panel {
+  &.white {
+    background-color: rgba(255,255,255,0.15);
+    box-shadow: 0px 4px 20px rgba(18, 15, 70, 0.15);
+    border-radius: 4px;
+    padding: 32px 40px 40px 39px;
+  }
+  &.orange {
+    background: #fef8f4;
+    box-shadow: 0 12px 60px rgba(98,61,34,.15), 0 4px 20px rgba(38,34,98,.04);
+    border-radius: 8px;
+    padding: 26px 6px 34px 33px;
+  }
+}

@@ -1,0 +1,16 @@
+// ТЕЛО ----------------------------------------------------------------------------------------------------------------
+body {
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: scroll;
+  -webkit-font-smoothing: antialiased;
+  @if ($add-base-to-body) {
+    @include addStyleMedia((
+            font-family: $base-font,
+            font-size: $base-font-size,
+            line-height: $base-line-height,
+            font-weight: $base-font-weight,
+            color: $base-color
+    ));
+  }
+}

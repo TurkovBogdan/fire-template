@@ -1,0 +1,19 @@
+.form--in-content {
+  .form-result {
+    @include addStyleMedia((
+            padding-top: (lg:102px, sm: 0px),
+            padding-bottom: (lg:102px, sm: 32px),
+    ));
+    h3 {
+      padding-bottom: 12px;
+    }
+
+  }
+  .form-row.form-row--submit{
+    p{
+      @include addStyleMedia((
+                      max-width: (lg: 260px, sm: auto)
+      ));
+    }
+  }
+}

@@ -1,0 +1,56 @@
+//  Цвета --------------------------------------------------------------------------------------------------------------
+$colors: (
+        white: white,
+        real-white: #1D1D1D,
+        black: #1D1D1D,
+        real-black: #1D1D1D,
+
+        gray: #bfbfbf,
+        gray-lighter: #DFDEDE,
+        gray-darker: #7F7F7F,
+
+        template-accent: #F37121,
+        template-accent-lighter: #ff901f,
+        template-accent-darker: #b2591b,
+
+        template-accent-alt: #262262,
+        template-accent-alt-lighter: #403B7D,
+        template-accent-alt-darker: #120f46,
+
+        error: #F02A2A,
+);
+
+// Переменные - ссылки на цвета. Должны начинаться с $cl- для упрощения поиска
+$cl-white: white;
+$cl-real-white: real-white;
+$cl-black: black;
+$cl-real-black: real-black;
+
+$cl-gray: gray;
+$cl-gray-lighter: gray-lighter;
+$cl-gray-darker: gray-darker;
+
+$cl-template-accent: template-accent;
+$cl-template-accent-light: template-accent-lighter;
+$cl-template-accent-alt-lighter: template-accent-darker;
+
+$cl-template-accent-alt: template-accent-alt;
+$cl-template-accent-alt-lighter: template-accent-alt-lighter;
+$cl-template-accent-alt-darker: template-accent-alt-darker;
+
+$cl-error: error;
+
+/* Функция для получения цвета из мапы.
+   color: get-color( <имя цвета в мапе, или переменная $cl-...>, <прозрачность> ); */
+@function get-color($color-name, $opacity: false) {
+  @if map-has-key($colors, $color-name) {
+    $color: map-get($colors, $color-name);
+    @if ($opacity != false) {
+      $color: rgba($color, $opacity);
+    }
+    @return $color;
+  }
+
+  @warn "Цвет #{$color-name} не найден в $colors";
+  @return null;
+}

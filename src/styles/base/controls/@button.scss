@@ -1,0 +1,64 @@
+%btn-clear {
+  background-color: transparent;
+  border: none;
+  margin: 0px;
+  padding: 0px;
+  outline: none;
+}
+
+%btn-nowrap {
+  white-space: nowrap;
+}
+
+%btn {
+  outline: none;
+  font-family: $btn-font;
+  font-weight: $btn-font-weight;
+  cursor: pointer;
+  box-shadow: 0px 4px 32px rgba(38, 33, 97, 0.15);
+
+  background: linear-gradient(180deg, #F08E41 0%, #E56B20 50%, #C75107 100%), get-color($cl-template-accent);
+  background-size: 100% 200%;
+  background-position: 0px 0%;
+  transition: background-position 0.4s;
+
+  @include addStyleMedia((
+          color: $btn-default-color,
+          border-radius: $btn-default-radius,
+          border: $btn-default-border,
+  ));
+
+  &:hover {
+    background-position: 0px 50%;
+  }
+
+  &:active {
+    background: linear-gradient(180deg, #9D3D00 0%, #E56B20 100%), get-color($cl-template-accent);
+    background-size: 100%;
+    background-position: top center;
+  }
+}
+
+%btn-default {
+  font-size: 18px;
+  line-height: 25px;
+  @include addStyleMedia((
+          padding: (lg:15px 75px, sm:15px 65px)
+  ));
+}
+
+%btn-small {
+  @include addStyleMedia((
+          font-size: (lg: 13px),
+          line-height: (lg: 18px),
+          padding: (lg: 10px 10px, sm: 7px 8px),
+  ));
+}
+
+%btn-big {
+  font-size: 20px;
+  line-height: 27px;
+  @include addStyleMedia((
+          padding: (lg: 19px 70px 20px, sm: 19px 65px 20px),
+  ))
+}

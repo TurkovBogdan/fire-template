@@ -1,0 +1,41 @@
+picture {
+  display: flex;
+  max-width: 100%;
+}
+
+img {
+  margin: 0px;
+  display: block;
+  max-width: 100%;
+}
+
+.media {
+  @include addStyleMedia((
+          padding-bottom: $media-block-padding-bottom
+  ));
+
+  &__content {
+    @include addStyleMedia((
+            padding-bottom: $media-content-padding-bottom
+    ));
+  }
+
+  &__description {
+    :last-child {
+      padding-bottom: 0px;
+    }
+  }
+}
+
+.media {
+  &.picture {
+    .media__content {
+      img {
+        max-width: 100%;
+        max-height: 90vh;
+      }
+    }
+  }
+}
+
+@import "media/media-picture";

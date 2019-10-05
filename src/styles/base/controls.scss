@@ -1,0 +1,69 @@
+@charset "utf-8";
+@import "controls/@button";
+@import "controls/@input";
+@import "controls/@label";
+
+// Кнопки --------------------------------------------------------------------------------------------------------------
+
+button {
+  &.btn {
+    @extend %btn;
+    @extend %btn-default;
+
+    &.small {
+      @extend %btn-small;
+    }
+
+    &.big {
+      @extend %btn-big;
+    }
+
+    &.short {
+      padding-left: 28px;
+      padding-right: 28px;
+    }
+  }
+}
+
+.big {
+  button {
+    @extend %btn-big;
+  }
+}
+
+// Поля ввода ----------------------------------------------------------------------------------------------------------
+
+input {
+  @extend %text;
+  @extend %input;
+  @extend %input-default;
+  &.big{
+    @extend %input-big;
+  }
+
+  &.error{
+    border-color: get-color($cl-error);
+    // ::-webkit-input-placeholder {}
+    // :-ms-input-placeholder {}
+    &::placeholder {
+      color: get-color($cl-error);
+    }
+  }
+}
+
+.big {
+  input {
+    @extend %input-big;
+  }
+}
+
+// label ---------------------------------------------------------------------------------------------------------------
+
+label {
+  &.label{
+    @extend %label;
+  }
+  &.for-input{
+    @extend %label-for-input;
+  }
+}

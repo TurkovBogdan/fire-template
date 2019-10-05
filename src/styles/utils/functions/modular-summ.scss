@@ -1,0 +1,17 @@
+@function getModularSum($key:"") {
+  @if map-has-key($ms-single, $key)
+  {
+    @return map-get($ms-single, $key);
+  }
+
+  @if map-has-key($ms-adaptive, $key)
+  {
+    @return map-get($ms-adaptive, $key);
+  }
+
+  @return false;
+}
+
+@function getMS($key:""){
+  @return getModularSum($key);
+}

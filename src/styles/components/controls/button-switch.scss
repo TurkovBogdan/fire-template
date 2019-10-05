@@ -1,0 +1,74 @@
+$component-name: '.button-switch';
+
+#{$component-name} {
+  display: flex;
+  @include addStyleMedia((
+    flex-wrap: (lg: nowrap, sm: wrap),
+    margin-bottom: (sm: -11px),
+  ));
+
+  &__item {
+    &-button {
+      @extend %text;
+      background: #FFFFFF;
+      border: 1px solid rgba(38, 34, 98, 0.2);
+      cursor: pointer;
+      transition: background-color 0.4s, color 0.2s;
+
+      @include addStyleMedia((
+              font-size: (sm:10px),
+              line-height: (sm:25px),
+              padding: (lg: 7px 24px, sm:1px 19px),
+              margin-right: (sm: 14px),
+              border-right: (lg: none, sm: 1px solid rgba(38, 34, 98, 0.2)),
+              border-radius: (sm: 4px),
+              margin-bottom: (sm: 11px)
+      ));
+
+
+      &:hover {
+        background-color: get-color($cl-gray-lighter);
+      }
+    }
+
+    input:checked + #{$component-name}__item-button {
+      background-color: get-color($cl-template-accent-alt);
+      color: get-color($cl-white);
+      transition: background-color 0.6s, color 0.3s;
+      &:hover {
+        background-color: get-color($cl-template-accent-alt-lighter);
+      }
+    }
+
+    &:first-child {
+      #{$component-name}__item-button {
+        border-top-left-radius: 4px;
+        border-bottom-left-radius: 4px;
+      }
+    }
+
+    &:last-child {
+      #{$component-name}__item-button {
+        border-top-right-radius: 4px;
+        border-bottom-right-radius: 4px;
+        border-right: 1px solid rgba(38, 34, 98, 0.2);
+        @include addStyleMedia((
+                margin-right: (sm: 0px),
+        ))
+      }
+    }
+  }
+
+  input {
+    display: none;
+  }
+
+  &--small {
+    #{$component-name}__item {
+      &-button {
+        @extend %text-extra-small;
+        padding: 7px 13px 5px 12px;
+      }
+    }
+  }
+}

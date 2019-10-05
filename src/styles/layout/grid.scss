@@ -1,0 +1,178 @@
+@if ($grid-debugger) {
+  body {
+    &:before {
+      content: '' + map-first-key($grid-breakpoints) + '';
+      position: fixed;
+      display: block;
+      color: #FF5722;
+      left: 0px;
+      bottom: 24px;
+      background-color: white;
+      padding: 2px 12px;
+      font-size: 24px;
+      line-height: 36px;
+      font-weight: bold;
+      z-index: 100;
+      @each $type, $data in $grid-breakpoints {
+        @if (map-has-key($data, container)) {
+          @include gridMedia($type) {
+            content: '' + $type + '';
+          }
+        }
+      }
+    }
+
+    &:after {
+      content: '';
+      display: block;
+      position: fixed;
+      bottom: 0px;
+      height: 3px;
+      background-color: #FF5722;
+      box-sizing: border-box;
+      z-index: 100;
+      @each $type, $data in $grid-breakpoints {
+        @if (map-has-key($data, container)) {
+          @include gridMedia($type) {
+            width: map-get($data, container);
+            left: 50%;
+            margin-left: - map-get($data, container);
+            border-style: solid;
+            border-color: #03A9F4;
+            border-width: 0px map-get($data, container-padding);
+          }
+        }
+      }
+    }
+  }
+}
+
+.#{$grid-container-class} {
+  margin: 0 auto;
+  box-sizing: border-box;
+
+  $last-bp-container-padding: false;
+  $last-bp-container: false;
+  @each $type, $data in $grid-breakpoints {
+    @if (map-has-key($data, container)) {
+      @include gridMedia($type) {
+        @if ($last-bp-container-padding != map-get($data, container-padding)) {
+          padding: 0 map-get($data, container-padding);
+        }
+
+        @if ($last-bp-container != map-get($data, container)) {
+          width: map-get($data, container);
+        }
+      }
+      $last-bp-container-padding: map-get($data, container-padding);
+      $last-bp-container: map-get($data, container);
+    }
+  }
+}
+
+.#{$grid-row-class} {
+  box-sizing: border-box;
+  display: flex;
+  flex-wrap: wrap;
+  @each $type, $data in $grid-breakpoints {
+    @if (map-has-key($data, container)) {
+      @include gridMedia($type) {
+        margin-left: - map-get($data, col-padding);
+        margin-right: - map-get($data, col-padding);
+      }
+    }
+  }
+}
+
+@each $type, $data in $grid-breakpoints {
+  @if (map-has-key($data, container)) {
+    @for $i from 1 through $grid-columns {
+      $currentColumnClass: #{$grid-col-prefix}#{$type}-#{$i};
+
+      .#{$currentColumnClass} {
+        @if ($grid-col-general-class-make-basic == false) {
+          width: auto;
+          box-sizing: border-box;
+          position: relative;
+          min-height: 1px;
+        }
+
+        @include gridMedia($type) {
+          flex-basis: percentage(($i / $grid-columns));
+          max-width: percentage(($i / $grid-columns));
+          @if ($grid-col-general-class-make-basic == false) {
+            padding-left: map-get($data, col-padding);
+            padding-right: map-get($data, col-padding);
+          }
+        }
+      }
+
+      @if ($enable-grid-order-classes) {
+        .order-#{$type}-#{$i} {
+          @media (min-width: map-get($data, min)) {
+            order: $i;
+          }
+        }
+      }
+
+      @if ($grid-offset-classes-enable) {
+        @if ($grid-offset-max >= ($i)) {
+          .#{$grid-offset-classes-prefix}#{$type}#{$grid-offset-classes-postfix}-#{($i)}#{$grid-offset-classes-end} {
+            @include gridMedia($type) {
+              margin-left: percentage((($i) / $grid-columns));
+            }
+          }
+        }
+      }
+
+    }
+
+    //
+    @if ($grid-col-general-class) {
+      .#{$grid-col-general-class-name} {
+        box-sizing: border-box;
+        position: relative;
+        min-height: 1px;
+        width: auto;
+        @include gridMedia($type) {
+          padding-left: map-get($data, col-padding);
+          padding-right: map-get($data, col-padding);
+        }
+      }
+    }
+
+    @if ($grid-col-margin-classes) {
+      .#{$grid-col-margin-classes-prefix}#{$type} {
+        @include gridMedia($type) {
+          margin-left: map-get($data, col-padding);
+          margin-right: map-get($data, col-padding);
+        }
+      }
+      .no-#{$grid-col-margin-classes-prefix}#{$type} {
+        @include gridMedia($type) {
+          margin-left: 0px;
+          margin-right: 0px;
+        }
+      }
+      .return-padding-#{$type} {
+        @include gridMedia($type) {
+          padding-left: map-get($data, col-padding) !important;
+          padding-right: map-get($data, col-padding) !important;
+        }
+      }
+    }
+
+    @if ($enable-grid-order-classes) {
+      .order-#{$type}-first {
+        @media (min-width: map-get($data, min)) {
+          order: -1;
+        }
+      }
+      .order-#{$type}-last {
+        @media (min-width: map-get($data, min)) {
+          order: $grid-columns + 1;
+        }
+      }
+    }
+  }
+}

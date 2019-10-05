@@ -1,0 +1,129 @@
+// ЗАГОЛОВКИ -----------------------------------------------------------------------------------------------------------
+
+/* Очистка отступов */
+%header-clear {
+  padding: 0px;
+  margin: 0px;
+}
+
+/* Базовый протоип.
+   Если какой-то элемент должен унаследовать стили заголовка, но с просизовльными размерами типографики */
+%header {
+  font-family: $header-font;
+  font-weight: $header-font-weight;
+  color: $header-color;
+}
+
+
+%h1 {
+  @extend %header-clear;
+  @include addStyleMedia((
+          font-family: $h1-font,
+          font-weight: $h1-font-weight,
+          color: $h1-color,
+          font-size: $h1-font-size,
+          line-height: $h1-line-height,
+  ));
+}
+
+%h1-padding {
+  @include addStyleMedia((
+          padding-top: $h1-padding-top,
+          padding-bottom: $h1-padding-bottom
+  ));
+}
+
+
+%h2 {
+  @extend %header-clear;
+  @include addStyleMedia((
+          font-family: $h2-font,
+          font-weight: $h2-font-weight,
+          color: $h2-color,
+          font-size: $h2-font-size,
+          line-height: $h2-line-height,
+  ));
+}
+
+%h2-padding {
+  @include addStyleMedia((
+          padding-top: $h2-padding-top,
+          padding-bottom: $h2-padding-bottom
+  ));
+}
+
+
+%h3 {
+  @extend %header-clear;
+  @include addStyleMedia((
+          font-family: $h3-font,
+          font-weight: $h3-font-weight,
+          color: $h3-color,
+          font-size: $h3-font-size,
+          line-height: $h3-line-height,
+  ));
+}
+
+%h3-padding {
+  @include addStyleMedia((
+          padding-top: $h3-padding-top,
+          padding-bottom: $h3-padding-bottom
+  ));
+}
+
+
+%h4 {
+  @extend %header-clear;
+  @include addStyleMedia((
+          font-family: $h4-font,
+          font-weight: $h4-font-weight,
+          color: $h4-color,
+          font-size: $h4-font-size,
+          line-height: $h4-line-height,
+  ));
+}
+
+%h4-padding {
+  @include addStyleMedia((
+          padding-top: $h4-padding-top,
+          padding-bottom: $h4-padding-bottom
+  ));
+}
+
+
+%h5 {
+  @extend %header-clear;
+  @include addStyleMedia((
+          font-family: $h5-font,
+          font-weight: $h5-font-weight,
+          color: $h5-color,
+          font-size: $h5-font-size,
+          line-height: $h5-line-height,
+  ));
+}
+
+%h5-padding {
+  @include addStyleMedia((
+          padding-top: $h5-padding-top,
+          padding-bottom: $h5-padding-bottom
+  ));
+}
+
+
+%h6 {
+  @extend %header-clear;
+  @include addStyleMedia((
+          font-family: $h6-font,
+          font-weight: $h6-font-weight,
+          color: $h6-color,
+          font-size: $h6-font-size,
+          line-height: $h6-line-height,
+  ));
+}
+
+%h6-padding {
+  @include addStyleMedia((
+          padding-top: $h6-padding-top,
+          padding-bottom: $h6-padding-bottom
+  ));
+}

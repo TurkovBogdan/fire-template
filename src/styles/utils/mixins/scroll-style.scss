@@ -1,0 +1,22 @@
+@mixin scrollStyle(){
+  @if($scrollbar-thin){
+    scrollbar-width: thin;
+  }
+
+  @if($scrollbar-chrome-custom){
+    &::-webkit-scrollbar
+    {
+      width: $scrollbar-chrome-width;
+    }
+
+    &::-webkit-scrollbar-track
+    {
+      background-color: $scrollbar-chrome-track-color;
+    }
+
+    &::-webkit-scrollbar-thumb
+    {
+      background-color: $scrollbar-chrome-thumb-color;
+    }
+  }
+}

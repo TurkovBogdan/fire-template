@@ -1,0 +1,32 @@
+%clear{
+  padding: 0px;
+  margin: 0px;
+}
+
+%text {
+  @include addStyleMedia((
+          font-family: $p-font,
+          font-weight: $p-font-weight,
+          font-size: $p-default-font-size,
+          line-height: $p-default-line-height,
+  ));
+}
+
+%text-extra-small {
+  @include addStyleMedia((
+          font-size: 12px,
+          line-height: 16px,
+  ));
+}
+
+%text-small {
+  @include addStyleMedia((
+          font-family: $p-font,
+          font-size: $p-small-font-size,
+          line-height: $p-small-line-height,
+  ));
+}
+
+%text-gray {
+  color: get-color($cl-gray-darker);
+}

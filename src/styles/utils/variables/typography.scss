@@ -1,0 +1,151 @@
+// ОСНОВА ТИПОГРАФИКИ --------------------------------------------------------------------------------------------------
+$base-font: "open-sans";
+$base-font-size: 18px;
+$base-line-height: 18px * 1.25;
+$base-font-weight: 400;
+$base-color: get-color($cl-black);
+
+// Добавить базовые стили шрифтов к body
+$add-base-to-body: true;
+
+// Выделение текста ----------------------------------------------------------------------------------------------------
+$text-selection-color: get-color($cl-white);
+$text-selection-background: get-color($cl-template-accent);
+
+
+// ПАРАГРАФЫ -----------------------------------------------------------------------------------------------------------
+$p-font: $base-font;
+$p-font-weight: $base-font-weight;
+$p-color: get-color($cl-black);
+
+$p-default-font-size: (lg: 18px, md: 16px);
+$p-default-line-height: (lg: 28px);
+$p-default-padding-bottom: (lg: 12px);
+
+$p-small-font-size: (lg: 14px);
+$p-small-line-height: (lg: 22px);
+$p-small-padding-bottom: 0px;
+
+
+// СПИСКИ  -------------------------------------------------------------------------------------------------------------
+$list-margin-left: 30px;
+$list-padding-bottom: 24px;
+$list-item-padding-bottom: 18px;
+$list-item-mark-color: get-color($cl-template-accent);
+
+// Маркированные
+$marked-list-style: none;
+$marked-list-before: "\2014";
+$marked-list-before-font-size: 1em;
+
+// Нумированные
+$numbered-list-before-font-size: 1em;
+
+
+// ВЛОЖЕННЫЕ СПИСКИ ----------------------------------------------------------------------------------------------------
+$nested-list-style: true;
+
+// Маркированные
+$nested-marked-margin-left: 30px;
+$nested-marked-before-font-size: 35px;
+
+// Нумированные
+$nested-numbered-margin-left: 42px;
+$nested-numbered-before-font-size: 35px;
+
+
+// ССЫЛКИ --------------------------------------------------------------------------------------------------------------
+$link-color: get-color($cl-template-accent-alt);
+
+$link-border-width: 1px;
+$link-border-style: solid;
+$link-border-color: rgba(get-color($cl-template-accent-alt), 0.6);
+
+$link-hover-color: get-color($cl-template-accent);
+$link-hover-border-color: rgba(get-color($cl-template-accent), 0);
+
+$link-active-color: get-color($cl-white);
+$link-visited-color: get-color($cl-white);
+
+$link-disable-visited-style: true;
+
+
+// ИНЛАЙНОВЫЕ ЭЛЕМЕНТЫ -------------------------------------------------------------------------------------------------
+$strong-font-weight: 700;
+
+
+// ЗАГОЛОВКИ -----------------------------------------------------------------------------------------------------------
+$header-font: 'minion-pro';
+$header-font-weight: 600;
+$header-color: #1D1D1D;
+
+// h1
+$h1-font: $header-font;
+$h1-font-weight: $header-font-weight;
+$h1-color: #FFFFFF;
+
+$h1-font-size: (lg: 66px, md: 60px, ms: 42px, xs: 30px);
+$h1-line-height: (lg: 66px, ms: 48px, xs: 34px);
+
+$h1-padding-top: (lg: 42px, xs: 20px);
+$h1-padding-bottom: (lg: 30px, xs: 7px);
+
+
+// h2
+$h2-font: $header-font;
+$h2-font-weight: $header-font-weight;
+$h2-color: $header-color;
+
+$h2-font-size: (lg: 48px, sm: 28px);
+$h2-line-height: (lg: 58px, sm: 28px);
+
+$h2-padding-top: (lg: 47px);
+$h2-padding-bottom: (lg: 27px, sm: 18px);
+
+
+// h3
+$h3-font: $header-font;
+$h3-font-weight: $header-font-weight;
+$h3-color: $header-color;
+
+$h3-font-size: (lg: 34px, sm: 27px);
+$h3-line-height: (lg: 42px, sm: 32px);
+
+$h3-padding-top: (lg: 52px);
+$h3-padding-bottom: (lg: 40px);
+
+
+// h4
+$h4-font: $header-font;
+$h4-font-weight: $header-font-weight;
+$h4-color: $header-color;
+
+$h4-font-size: (lg: 28px);
+$h4-line-height: (lg: 34px);
+
+$h4-padding-top: (lg: 32px);
+$h4-padding-bottom: (lg: 28px);
+
+
+// h5
+$h5-font: $header-font;
+$h5-font-weight: $header-font-weight;
+$h5-color: $header-color;
+
+$h5-font-size: (lg: 24px);
+$h5-line-height: (lg: 28px);
+
+$h5-padding-top: (lg: 9px);
+$h5-padding-bottom: (lg: 9px);
+
+
+// h6
+$h6-font: $header-font;
+$h6-font-weight: $header-font-weight;
+$h6-color: $header-color;
+
+$h6-font-size: 12px;
+$h6-line-height: 12px;
+
+$h6-padding-top: 12px;
+$h6-padding-bottom: 12px;

@@ -1,0 +1,14 @@
+%label {
+  @extend %text;
+}
+
+%label-for-input{
+  color: get-color($cl-gray);
+  position: absolute;
+  padding: 0px 4px;
+  background-color: white;
+  margin-left: 12px;
+  margin-top: -10px;
+  font-size: 18px;
+  line-height: 18px;
+}

@@ -1,0 +1,66 @@
+// Первый ключ в мапе
+@function map-first-key($map)
+{
+  $mapKeys: map-keys($map);
+  @return nth($mapKeys, 1);
+}
+
+// Последний ключ в мапе
+@function map-last-key($map)
+{
+  $mapKeys: map-keys($map);
+  @return nth($mapKeys, length($mapKeys));
+}
+
+// Предыдущий ключ мапы
+@function map-prev-key($map, $key)
+{
+  $map-prev-key: false;
+  @each $type, $data in $map {
+    @if($type == $key){
+      @return $map-prev-key;
+    }
+    $map-prev-key: $type;
+  }
+  @return false;
+}
+
+// Следующий ключ мапы
+@function map-next-key($map, $key)
+{
+  $map-next-key: false;
+  $map-prev-key: false;
+  @each $type, $data in $map {
+    @if($map-prev-key == $key){
+      @return $type;
+    }
+    $map-prev-key: $type;
+  }
+  @return false;
+}
+
+// Перевернуть мапу
+@function map-reverse($map) {
+  $result: null;
+  @if type-of($map) == "map" {
+    $keys: map-keys($map);
+    $map-reversed: ();
+
+    @for $i from length($keys) through 1 {
+      $map-reversed: map-merge(
+                      $map-reversed,
+                      (nth($keys, $i): map-get($map, nth($keys, $i)))
+      );
+    }
+
+    @if type-of($map-reversed) == "map" {
+      $result: $map-reversed;
+    } @else {
+      @warn 'There was an error reversing the order of "#{$map}"';
+    }
+  } @else {
+    @warn '"#{$map}" is not a valid map';
+  }
+
+  @return $result;
+}

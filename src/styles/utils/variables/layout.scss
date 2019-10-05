@@ -1,0 +1,7 @@
+// Скроллбар -----------------------------------------------------------------------------------------------------------
+$scrollbar-thin: true;
+
+$scrollbar-chrome-custom: true;
+$scrollbar-chrome-width: 4px;
+$scrollbar-chrome-track-color: get-color($cl-gray-lighter);
+$scrollbar-chrome-thumb-color: get-color($cl-template-accent-alt-lighter);

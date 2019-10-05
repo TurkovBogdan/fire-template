@@ -1,0 +1,34 @@
+// Система модульных сумм ----------------------------------------------------------------------------------------------
+
+// Единицы модулей
+$ms-single: (
+        // Большие модули
+        mbXS: 8px, mbS: 16px, mbM: 24px, mbL: 32px, mbXL: 40px, mb2XL: 48px, mb3XL: 64px, mb4XL: 80px, mb5XL: 112px, mb6XL: 144px,
+        // Малые модули
+        msXS: 8px, msS: 14px, msM: 18px, msL: 24px, msXL: 32px, ms2XL: 40px, ms3XL: 56px, ms4XL: 72px, ms5XL: 96px, ms6XL: 128px
+)!default;
+
+// Адаптивные группы модулей
+$ms-adaptive: (
+        mXS: (xx: getMS(mbXS), sm: getMS(msXS)),
+        mS: (xx: getMS(mbS), sm: getMS(msS)),
+        mM: (xx: getMS(mbM), sm: getMS(msM)),
+        mL: (xx: getMS(mbL), sm: getMS(msL)),
+        mXL: (xx: getMS(mbXL), sm: getMS(msXL)),
+        m2XL: (xx: getMS(mb2XL), sm: getMS(ms2XL)),
+        m3XL: (xx: getMS(mb3XL), sm: getMS(ms3XL)),
+        m4XL: (xx: getMS(mb4XL), sm: getMS(ms4XL)),
+        m5XL: (xx: getMS(mb5XL), sm: getMS(ms5XL)),
+        m6XL: (xx: getMS(mb6XL), sm: getMS(ms6XL)),
+) !default;
+
+$mXS: mXS;
+$mS: mS;
+$mM: mM;
+$mL: mL;
+$mXL: mXL;
+$m2XL: m2XL;
+$m3XL: m3XL;
+$m4XL: m4XL;
+$m5XL: m5XL;
+$m6XL: m6XL;

@@ -1,0 +1,68 @@
+.form {
+  transition: height 0.6s;
+
+  &-row {
+    max-width: 382px;
+    padding-bottom: 28px;
+
+    input {
+      width: 100%;
+    }
+
+    &:last-child {
+      padding-bottom: 0px;
+    }
+
+    &--submit {
+      display: flex;
+      align-items: center;
+      max-width: 560px;
+      @media screen and (max-width: 780px) {
+        display: block;
+        button {
+          margin-bottom: 15px;
+        }
+      }
+
+      button[type=submit] {
+        @extend %btn-nowrap;
+        @include addStyleMedia((
+                margin-right: (lg: 21px, sm: 0px)
+        ))
+      }
+    }
+
+    &--description {
+      margin-top: -4px;
+      @include addStyleMedia((
+              max-width: (lg:75%, sm: 100%),
+      ))
+    }
+  }
+
+  &.default-padding {
+    padding-bottom: 28px;
+  }
+
+  &-content {
+
+  }
+
+  &-hidden {
+    display: none;
+  }
+
+  &-result {
+    display: none;
+  }
+
+  &--show-result {
+    .form-result {
+      display: block;
+    }
+
+    .form-content {
+      display: none;
+    }
+  }
+}

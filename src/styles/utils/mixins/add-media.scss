@@ -1,0 +1,65 @@
+// Штука, которая правильно раскрывает медиа стили
+@mixin addStyleMedia($attr:"", $data:"") {
+  // Мы поймали добавление одного атрибута
+  @if type-of($attr) != map {
+    @include echoStyleMedia($attr, handlerStyleMedia($attr, $data));
+  } @else { // Добавление множества параметров
+    @each $attrName, $attrParams in $attr {
+      @include echoStyleMedia($attrName, handlerStyleMedia($attrName, $attrParams));
+    }
+  }
+}
+
+@mixin add-media($attr:"", $data:"") {
+  @include addStyleMedia($attr, $data);
+}
+
+// Обработчик для медиа стилей
+// Отлавливаем теги для последующих операций над ними
+@function handlerStyleMedia($attr, $data) {
+  @if $attr == 'padding' or $attr == 'margin'
+  {
+    @if type_of($data) != map {
+      $res: ();
+      $way: ('left', 'top', 'right', 'bottom');
+      @for $i from 1 through length($data) {
+        @if nth($data, $i) != '!important' {
+          $res: append($res, handlerStyleMedia($attr + '-' + nth($way, $i), nth($data, $i)), space);
+        } @else {
+          $res: append($res, nth($data, $i), space);
+        }
+      }
+      @return $res;
+    }
+  }
+
+  $ms-data: getModularSum($data);
+  @if($ms-data != false){
+    @return $ms-data;
+  }
+
+  @return $data;
+}
+
+@mixin echoStyleMedia($attr, $data) {
+  @if type-of($data) != map {
+    // И одного значения
+    #{$attr}: $data;
+  } @else {
+    // И несколько значений
+    @each $gridType, $gridData in $grid-breakpoints {
+      // Максимальный размер считается значением по-умолчанию
+      @if $gridType == map-first-key($grid-breakpoints) {
+        @if map-has-key($data, $gridType) {
+          #{$attr}: handlerStyleMedia($attr, map-get($data, $gridType));
+        }
+      } @else {
+        @if map-has-key($data, $gridType) {
+          @media (max-width: grid-max-width-prev-min-one($gridType)) {
+            #{$attr}: handlerStyleMedia($attr, map-get($data, $gridType));
+          }
+        }
+      }
+    }
+  }
+}

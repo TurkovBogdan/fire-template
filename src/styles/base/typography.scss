@@ -1,0 +1,98 @@
+@charset "utf-8";
+
+// ПРОТОТИПЫ -----------------------------------------------------------------------------------------------------------
+@import "typography/@text";
+@import "typography/@text-modifiers";
+@import "typography/@paragraphs";
+@import "typography/@lists";
+@import "typography/@links";
+@import "typography/@headers";
+
+
+// ПАРАГРАФЫ -----------------------------------------------------------------------------------------------------------
+p {
+  @extend %p-clear;
+  @extend %p-default;
+  @extend %p-default-padding;
+
+  &.small {
+    @extend %p-small;
+  }
+
+  &.extra-small {
+    @extend %p-extra-small;
+  }
+
+  &.center{
+    text-align: center;
+  }
+}
+
+.small {
+  p {
+    @extend %p-small;
+  }
+}
+
+.extra-small {
+  p {
+    @extend %p-extra-small;
+  }
+}
+
+
+// МОДИФИКАТОРЫ ТЕКСТА ------------------------------------------------------------------------------------------------
+strong {
+  @extend %strong;
+}
+
+
+// ССЫЛКИ --------------------------------------------------------------------------------------------------------------
+a {
+  @extend %a;
+  &:hover {
+    @extend %a-hover;
+  }
+}
+
+
+// СПИСКИ --------------------------------------------------------------------------------------------------------------
+ul.ul {
+  @extend %ul;
+}
+
+ol.ol {
+  @extend %ol;
+}
+
+
+// ЗАГОЛОВКИ -----------------------------------------------------------------------------------------------------------
+h1 {
+  @extend %h1;
+  @extend %h1-padding;
+}
+
+h2 {
+  @extend %h2;
+  @extend %h2-padding;
+}
+
+h3 {
+  @extend %h3;
+  @extend %h3-padding;
+}
+
+h4 {
+  @extend %h4;
+  @extend %h4-padding;
+}
+
+h5 {
+  @extend %h5;
+  @extend %h5-padding;
+}
+
+h6 {
+  @extend %h6;
+  @extend %h6-padding;
+}

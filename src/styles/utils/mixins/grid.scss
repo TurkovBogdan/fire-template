@@ -1,0 +1,31 @@
+
+// Нахождение max-width. (min-width предыдущего брейкпоина минус один)
+// $type: короткое название брейкпоинта (xx, md, lg, ...)
+@function grid-max-width-prev-min-one ($type) {
+  @if($type == xx)
+  {
+    $max-width: map-get(map-get($grid-breakpoints, xx), min) - 1;
+    @return $max-width;
+  }
+  @else
+  {
+    $prev-breakpoint: nth(map_keys($grid-breakpoints), index(map_keys($grid-breakpoints), $type) - 1);
+    $max-width: map-get(map-get($grid-breakpoints, $prev-breakpoint), min) - 1;
+
+    @return $max-width;
+  }
+}
+
+// Миксин для вывода правильных медиа в цикле
+// Полезен определением первого брейкпоинта и всех остальных
+@mixin gridMedia($type) {
+  @if $type == map-first-key($grid-breakpoints) {
+    @content;
+  } @else {
+    @media (max-width: grid-max-width-prev-min-one($type)) {
+      @content;
+    }
+  }
+}
+
+

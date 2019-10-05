@@ -1,0 +1,125 @@
+// СПИСКИ --------------------------------------------------------------------------------------------------------------
+
+/* Очистка отступов */
+%li-clear{
+  padding: 0px;
+  margin: 0px;
+}
+
+%ul-clear {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+%ol-clear {
+  padding: 0px;
+  margin: 0px;
+  list-style: none;
+}
+
+
+/* Маркированные */
+%ul {
+  @extend %ul-clear;
+  @extend %text;
+
+  @include addStyleMedia((
+          padding-bottom: $list-padding-bottom,
+          margin-left: $list-margin-left
+  ));
+
+  li {
+    @extend %li-clear;
+    @include addStyleMedia((
+            list-style: $marked-list-style,
+            padding-bottom: $list-item-padding-bottom,
+            position: relative,
+    ));
+
+    &:last-child {
+      padding-bottom: 0px;
+    }
+
+    &:before {
+      @extend %text;
+      position: absolute;
+      @include addStyleMedia((
+              content: $marked-list-before,
+              color:$list-item-mark-color,
+              font-size: $marked-list-before-font-size,
+              display: inline-block,
+              margin-left: -$list-margin-left,
+              width: $list-margin-left
+      ));
+    }
+
+    @if ($nested-list-style) {
+      ul {
+        @include addStyleMedia((
+                margin-left: $nested-marked-margin-left
+        ))
+      }
+    }
+  }
+}
+
+
+/* Нумерованные */
+%ol {
+  @extend %ol-clear;
+  @extend %text;
+  counter-reset: newDecimal;
+  @include addStyleMedia((
+          padding-bottom: $list-padding-bottom,
+          padding-left: $list-margin-left
+  ));
+
+  li {
+    @extend %li-clear;
+    @include addStyleMedia((
+            list-style: $marked-list-style,
+            padding-bottom: $list-item-padding-bottom,
+            position: relative,
+    ));
+
+    &:last-child {
+      padding-bottom: 0px;
+    }
+
+    &:before {
+      counter-increment: newDecimal;
+      content: counter(newDecimal) ".";
+      position: absolute;
+      @include addStyleMedia((
+              color:$list-item-mark-color,
+              font-size: $numbered-list-before-font-size,
+              font-weight: inherit,
+              display: inline-block,
+              margin-left: -$list-margin-left,
+              width: $list-margin-left
+      ));
+    }
+  }
+
+  @if ($nested-list-style) {
+    ol {
+      counter-reset: newDecimal2;
+      @include addStyleMedia((
+              margin-left: $nested-numbered-margin-left
+      ));
+      li {
+        &:before {
+          counter-increment: newDecimal2;
+          content: counter(newDecimal) "." counter(newDecimal2) ".";
+          @include addStyleMedia((
+                  color:$list-item-mark-color,
+                  display: inline-block,
+                  margin-left: -$nested-numbered-margin-left,
+                  width: $nested-numbered-margin-left
+          ));
+        }
+      }
+    }
+  }
+}

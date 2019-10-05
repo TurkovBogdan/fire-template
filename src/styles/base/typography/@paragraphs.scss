@@ -1,0 +1,34 @@
+// СПИСКИ --------------------------------------------------------------------------------------------------------------
+
+/* Очистка отступов */
+%p-clear {
+  margin: 0px;
+  padding: 0px;
+}
+
+%p-default {
+  @extend %p-clear;
+  @extend %text;
+}
+
+%p-default-padding {
+  @include addStyleMedia((
+          padding-bottom: $p-default-padding-bottom
+  ));
+}
+
+
+%p-small {
+  @extend %text-small;
+  @include addStyleMedia((
+          padding-bottom: $p-small-padding-bottom
+  ));
+}
+
+
+%p-extra-small {
+  @extend %text-extra-small;
+  @include addStyleMedia((
+          padding-bottom: $p-small-padding-bottom
+  ));
+}
